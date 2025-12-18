@@ -986,6 +986,10 @@ body.modal-open {
         width: 180px;
         height: 260px;
     }
+
+    .game-carousel .swiper-slide img {
+        opacity: 1;
+    }
 }
 
 /* ✅ Mobile Responsive */
@@ -1002,6 +1006,10 @@ body.modal-open {
     .game-carousel .swiper-slide {
         width: 150px;
         height: 220px;
+    }
+
+    .game-carousel .swiper-slide img {
+        opacity: 1;
     }
 
     .carousel-nav button {
@@ -1554,4 +1562,5 @@ body.modal-open {
         font-size: 0.9rem;
         padding: 0 1rem;
     }
+
 }
