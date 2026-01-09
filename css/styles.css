@@ -217,7 +217,6 @@ header {
         */
 
 
-/* Swiper Section Wrapper */
 .swiper-section {
     user-select: none;
     padding: 1.5rem 6.5rem;
@@ -227,7 +226,6 @@ header {
     border-radius: 1.5rem;
 }
 
-/* Banner Content Positioning (Desktop) */
 .banner-content {
     position: absolute;
     top: clamp(3rem, 10vw, 10rem);
@@ -241,7 +239,6 @@ header {
     font-weight: var(--font-weight-1);
     line-height: 1.2;
     color: #ffb347;
-    /* warm gradient tone */
     text-shadow:
         0 0 8px rgba(255, 179, 71, 0.6),
         0 2px 4px rgba(0, 0, 0, 0.8);
@@ -257,8 +254,6 @@ header {
         0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-
-/* CTA Button */
 .banner-content .button {
     margin-top: 1.5rem;
     padding: .75rem 1.5rem;
@@ -276,15 +271,12 @@ header {
     background-position: left center;
 }
 
-/* Banner Images */
 .swiper-slide img {
     width: 100%;
     height: clamp(16rem, 40vw, 26.25rem);
     object-fit: cover;
-    border-radius: 1.5rem;
 }
 
-/* Pagination */
 #swiper-1 .swiper-pagination {
     bottom: 2rem;
 }
@@ -303,7 +295,6 @@ header {
     height: .55rem;
 }
 
-/* ✅ Mobile Responsive */
 @media (max-width: 768px) {
     .swiper-section {
         padding: 1rem;
@@ -475,7 +466,6 @@ header {
         ################################################################
         */
 
-/* ✅ Wrap both input + button in flex */
 .game-search-box {
     display: flex;
     align-items: center;
@@ -488,7 +478,6 @@ header {
 
 .search-btn {
     -webkit-tap-highlight-color: transparent;
-    /* remove ugly default highlight */
 }
 
 .search-btn:focus,
@@ -771,9 +760,7 @@ header {
 .promotions-title {
     display: flex;
     justify-content: space-between;
-    /* evenly space out h2 and link */
     align-items: center;
-    /* vertically center */
     margin: 0 0 1rem 0;
 }
 
@@ -782,7 +769,6 @@ header {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    /* space between icon and text */
 }
 
 .promotions-title a {

@@ -1,8 +1,8 @@
 new Swiper("#swiper-1", {
     autoplay: {
-        delay: 5000, // 5000 milliseconds = 5 seconds
-        pauseOnMouseEnter: true, // Optional: pauses autoplay on mouse hover
-        disableOnInteraction: false, // Optional: keeps autoplay running after user interaction
+        delay: 5000,
+        pauseOnMouseEnter: true,
+        disableOnInteraction: false,
     },
     pagination: {
         el: "#swiper-1 .swiper-pagination",
@@ -12,7 +12,6 @@ new Swiper("#swiper-1", {
     loop: true
 });
 
-// ✅ Game Database (expandable later)
 const games = [
     // Top Picks Games
     { name: "Gates of Olympus", provider: "Pragmatic Play", img: "images/js-game-01.png" },
@@ -107,7 +106,6 @@ document.querySelector(".search-btn").addEventListener("click", () => {
     document.getElementById("game-search").focus();
 });
 
-// ✅ Live Search
 searchInput.addEventListener("input", () => {
     const query = searchInput.value.toLowerCase();
     resultsList.innerHTML = "";
@@ -133,7 +131,6 @@ searchInput.addEventListener("input", () => {
     });
 });
 
-// ✅ Open Modal
 function openModal(game) {
     modalTitle.textContent = game.name;
     modalProvider.textContent = game.provider;
@@ -143,7 +140,6 @@ function openModal(game) {
     resultsList.style.display = "none";
 }
 
-// ✅ Close Modal Events
 closeModal.addEventListener("click", () => closeGameModal());
 modal.addEventListener("click", (e) => {
     if (e.target === modal) closeGameModal();
@@ -162,19 +158,19 @@ const swiper = new Swiper(".gameSwiper", {
     centeredSlides: true,
     slidesPerView: "auto",
     loop: true,
-    loopedSlides: 15, // match total number of slides for symmetry
+    loopedSlides: 15,
     spaceBetween: 0,
-    speed: 800, // smooth out transition
+    speed: 800,
     coverflowEffect: {
-        rotate: 0, // keep flat
-        stretch: 10, // perfect centering, no uneven offset
-        depth: 200, // balanced depth perception
-        modifier: 1.5, // reduced exaggeration for symmetry
+        rotate: 0,
+        stretch: 10,
+        depth: 200,
+        modifier: 1.5,
         slideShadows: false
     },
     autoplay: {
-        delay: 2500, // autoplay interval
-        pauseOnMouseEnter: true, // Optional: pauses autoplay on mouse hover
+        delay: 2500,
+        pauseOnMouseEnter: true,
         disableOnInteraction: false,
     },
     navigation: {
@@ -187,17 +183,13 @@ const swiper = new Swiper(".gameSwiper", {
 document.querySelector(".search-btn").addEventListener("touchstart", function () {
     this.classList.add("pressed");
 
-    // Remove state immediately after tap so it snaps back to normal
     setTimeout(() => {
         this.classList.remove("pressed");
         this.blur();
-    }, 80);  // 80ms keeps natural tap feel
+    }, 80);
 });
 
-// Get all promo links
-const promoLinks = document.querySelectorAll('.promo-link');
 
-// Add event listener to each promo link
 promoLinks.forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -205,38 +197,34 @@ promoLinks.forEach(link => {
         const modal = document.getElementById(`${modalId}-modal`);
         modal.setAttribute('aria-hidden', 'false');
         modal.style.display = 'block';
-        document.body.classList.add('modal-open'); // Add modal-open class to body
+        document.body.classList.add('modal-open');
     });
 });
 
-// Get all close modal buttons
 const closeModalButtons = document.querySelectorAll('.promo-close-modal');
 
-// Add event listener to each close modal button
 closeModalButtons.forEach(button => {
     button.addEventListener('click', () => {
         const modal = button.closest('.promo-modal');
         modal.setAttribute('aria-hidden', 'true');
         modal.style.display = 'none';
-        document.body.classList.remove('modal-open'); // Remove modal-open class from body
+        document.body.classList.remove('modal-open');
     });
 });
 
-// Close modal when clicked outside
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('promo-modal')) {
         const modal = e.target;
         modal.setAttribute('aria-hidden', 'true');
         modal.style.display = 'none';
-        document.body.classList.remove('modal-open'); // Remove modal-open class from body
+        document.body.classList.remove('modal-open');
     }
 });
 
-console.log("Scroll script active."); // Debug
+console.log("Scroll script active.");
 
 const scrollBtn = document.getElementById("scrollTopBtn");
 
-// Start hidden once JS is ready
 scrollBtn.style.display = "none";
 
 window.addEventListener("scroll", () => {
