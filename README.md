@@ -3,6 +3,12 @@
 # Gawa to ni CamdenBMX bawal nakawin, pero pwede hiramin.
 # CamdenBMX 2025
 
+# JaihoSlots Official Update
+
+What's new?
+- Improved SEO
+- Improved Responsiveness for all platforms
+- Improved UI/UX
 
 # JaiHo Slots - Implementation Guide
 
