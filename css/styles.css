@@ -11,12 +11,12 @@
     --accent-green-light: #d0e98c;
     --accent-green-bright: #a6ec95;
     --border-gray: #444;
-    
+
     /* Spacing */
     --header-height: 60px;
     --section-padding: 1.5rem 6.5rem;
     --section-padding-mobile: 1.5rem 1rem;
-    
+
     /* Typography */
     --font-family: "Noto Sans", Arial, sans-serif;
     --font-weight-light: 300;
@@ -28,17 +28,17 @@
     --font-size-lg: 1.5rem;
     --font-size-xl: 2rem;
     --font-size-2xl: 2.5rem;
-    
+
     /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
-    
+
     /* Border Radius */
     --radius-sm: 0.5rem;
     --radius-md: 0.75rem;
     --radius-lg: 1.5rem;
-    
+
     font-family: var(--font-family);
 }
 
@@ -140,6 +140,44 @@ button:focus-visible {
     color: grey;
     font-size: var(--font-size-md);
     margin-right: 0.5rem;
+}
+
+/* Noscript Notice */
+.noscript-note {
+    font-size: 0.875rem;
+    opacity: 0.8;
+    margin-top: 0.5rem;
+}
+
+/* Play Now Button */
+.top-picks-title .button,
+.slots-title .button,
+.flying-games-title .button,
+.spinning-wheels-title .button {
+    padding: 0.75rem 1.5rem;
+    font-size: var(--font-size-sm);
+    border: none;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: var(--font-weight-bold);
+    color: var(--text-black);
+    background: linear-gradient(90deg,
+            var(--bg-cta) 0%,
+            var(--bg-cta) 50%,
+            var(--accent-green) 65%,
+            var(--bg-cta) 100%);
+    background-size: 200% 200%;
+    background-position: right center;
+    transition: background-position var(--transition-slow), transform var(--transition-normal);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.top-picks-title .button:hover,
+.slots-title .button:hover,
+.flying-games-title .button:hover,
+.spinning-wheels-title .button:hover {
+    background-position: left center;
 }
 
 /*
@@ -316,7 +354,7 @@ header {
 
 /*
     ################################################################
-    ||                      PROMOTIONAL SLIDER                    ||
+    ||                    PROMOTIONAL SLIDER                      ||
     ################################################################
 */
 
@@ -405,7 +443,6 @@ header {
 
     .swiper-slide img {
         object-position: right center;
-        opacity: 0.4;
     }
 
     #swiper-1 .swiper-pagination {
@@ -414,6 +451,17 @@ header {
 
     .swiper-slide {
         position: relative;
+    }
+
+    .banner-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: brightness(0.9);
+        z-index: 0;
     }
 
     .banner-content {
@@ -447,14 +495,14 @@ header {
 
     .banner-content .button {
         margin: 1.5rem auto 0;
-        width: 80%;
+        width: 100%;
         max-width: 280px;
     }
 }
 
 /*
     ################################################################
-    ||                       SEO CONTENT SECTION                  ||
+    ||                    SEO CONTENT SECTION                     ||
     ################################################################
 */
 
@@ -507,7 +555,7 @@ header {
 
 /*
     ################################################################
-    ||                   GAME CATEGORY NAVIGATION                 ||
+    ||                  GAME CATEGORY NAVIGATION                  ||
     ################################################################
 */
 
@@ -663,7 +711,7 @@ header {
 
 /*
     ################################################################
-    ||                      LIVE SEARCH                           ||
+    ||                        LIVE SEARCH                         ||
     ################################################################
 */
 
@@ -760,7 +808,7 @@ header {
 
 /*
     ################################################################
-    ||                      GAME MODAL                            ||
+    ||                        GAME MODAL                          ||
     ################################################################
 */
 
@@ -794,6 +842,7 @@ header {
         opacity: 0;
         transform: scale(0.9);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
@@ -854,7 +903,7 @@ header {
 
 /*
     ################################################################
-    ||                      TOP PICKS SECTION                     ||
+    ||                     TOP PICKS SECTION                      ||
     ################################################################
 */
 
@@ -875,18 +924,6 @@ header {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-}
-
-.top-picks-title a {
-    font-size: 0.9rem;
-    text-decoration: none;
-    color: #34d399;
-    font-weight: 500;
-    transition: color var(--transition-normal);
-}
-
-.top-picks-title a:hover {
-    color: #ffd166;
 }
 
 .top-picks-grid {
@@ -948,7 +985,7 @@ header {
 
 /*
     ################################################################
-    ||                    PROMOTIONS SECTION                      ||
+    ||                     PROMOTIONS SECTION                     ||
     ################################################################
 */
 
@@ -976,11 +1013,14 @@ header {
     text-decoration: none;
     color: #34d399;
     font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
     transition: color var(--transition-normal);
 }
 
 .promotions-title a:hover {
     color: #ffd166;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .promotions-grid {
@@ -1068,6 +1108,13 @@ body.modal-open {
     height: 100vh;
 }
 
+@media (max-width: 1275px) {
+    .promotions-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
 @media (max-width: 768px) {
     .promotions-section {
         padding: var(--section-padding-mobile);
@@ -1094,7 +1141,7 @@ body.modal-open {
 
 /*
     ################################################################
-    ||                    GAME CAROUSEL                           ||
+    ||                       GAME CAROUSEL                        ||
     ################################################################
 */
 
@@ -1131,7 +1178,6 @@ body.modal-open {
 }
 
 .game-carousel .swiper-slide {
-    background: var(--bg-dark-1);
     border-radius: 20px;
     width: 240px;
     height: 340px;
@@ -1253,16 +1299,19 @@ body.modal-open {
     gap: 0.5rem;
 }
 
-.slots-title a {
+.slots-title .see-more {
     font-size: 0.9rem;
     text-decoration: none;
     color: #34d399;
     font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
     transition: color var(--transition-normal);
 }
 
-.slots-title a:hover {
+.slots-title .see-more:hover {
     color: #ffd166;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .slots-grid {
@@ -1334,16 +1383,19 @@ body.modal-open {
     gap: 0.5rem;
 }
 
-.flying-games-title a {
+.flying-games-title .see-more {
     font-size: 0.9rem;
     text-decoration: none;
     color: #34d399;
     font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
     transition: color var(--transition-normal);
 }
 
-.flying-games-title a:hover {
+.flying-games-title .see-more:hover {
     color: #ffd166;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .flying-games-grid {
@@ -1416,16 +1468,19 @@ body.modal-open {
     gap: 0.5rem;
 }
 
-.spinning-wheels-title a {
+.spinning-wheels-title .see-more {
     font-size: 0.9rem;
     text-decoration: none;
     color: #34d399;
     font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
     transition: color var(--transition-normal);
 }
 
-.spinning-wheels-title a:hover {
+.spinning-wheels-title .see-more:hover {
     color: #ffd166;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .spinning-wheels-grid {
@@ -1725,9 +1780,11 @@ body.modal-open {
     0% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-6px);
     }
+
     100% {
         transform: translateY(0);
     }
