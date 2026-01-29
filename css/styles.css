@@ -1,67 +1,153 @@
 :root {
+    /* Colors */
     --bg-cta: #058C4D;
-    --background-color-1: #1E1E1E;
-    --background-color-2: #2B2B2B;
-    --background-color-3: #191919;
-    --text-color: #ffffff;
-    --text-color-1: #000000;
+    --bg-dark-1: #1E1E1E;
+    --bg-dark-2: #2B2B2B;
+    --bg-dark-3: #191919;
+    --text-white: #ffffff;
+    --text-black: #000000;
+    --text-gray: #969595;
+    --accent-green: #cbee69;
+    --accent-green-light: #d0e98c;
+    --accent-green-bright: #a6ec95;
+    --border-gray: #444;
+    
+    /* Spacing */
     --header-height: 60px;
-    --font-weight-1: light;
-    --font-weight-2: bold;
-    --font-size-1: 24px;
-    --font-size-2: 44px;
-    font-family: "Noto Sans", Arial, sans-serif;
+    --section-padding: 1.5rem 6.5rem;
+    --section-padding-mobile: 1.5rem 1rem;
+    
+    /* Typography */
+    --font-family: "Noto Sans", Arial, sans-serif;
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-bold: 700;
+    --font-size-base: 1rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1.25rem;
+    --font-size-lg: 1.5rem;
+    --font-size-xl: 2rem;
+    --font-size-2xl: 2.5rem;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Border Radius */
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1.5rem;
+    
+    font-family: var(--font-family);
 }
 
+/* Scrollbar Styles */
 ::-webkit-scrollbar {
-    width: 1.5px;
-
-    /* adjust the width to your liking */
+    width: 8px;
+    height: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
     background-color: #363636;
-    /* adjust the color to your liking */
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-track {
     background-color: transparent;
-
 }
 
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Base Styles */
 html,
 body {
     width: 100%;
-    height: 100%;
-    min-width: 430px;
-    background-color: var(--background-color-1);
-    color: var(--text-color);
+    max-height: 100%;
+    min-width: 320px;
+    background-color: var(--bg-dark-1);
+    color: var(--text-white);
     scroll-behavior: smooth;
-    /* Prevent horizontal scroll */
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
+/* Loading State */
+body {
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+/* Accessibility - Focus Styles */
+*:focus-visible {
+    outline: 3px solid var(--accent-green);
+    outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--accent-green);
+    outline-offset: 4px;
+}
+
+.grid-img:focus-visible,
+.button:focus-visible {
+    outline: 3px solid var(--accent-green);
+    outline-offset: 4px;
+    transform: scale(1.05);
+}
+
+/* Skip to Main Content Link (Accessibility) */
+.skip-to-main {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--bg-cta);
+    color: var(--text-white);
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    z-index: 100;
+}
+
+.skip-to-main:focus {
+    top: 0;
+}
+
+/* Visually Hidden (Screen Reader Only) */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Icon Utility */
 .icon {
     color: grey;
-    font-size: 1.25rem;
+    font-size: var(--font-size-md);
     margin-right: 0.5rem;
 }
 
 /*
-        ################################################################
-        ||                                                            ||
-        ||                         HEADER CSS                         ||
-        ||                                                            ||
-        ################################################################
-        */
+    ################################################################
+    ||                         HEADER CSS                         ||
+    ################################################################
+*/
 
-/* === HEADER DESKTOP (unchanged) === */
 header {
     user-select: none;
     top: 0;
@@ -72,113 +158,115 @@ header {
 .header-nav {
     width: 100%;
     display: flex;
-    padding: 0 104px;
+    padding: 0 6.5rem;
     height: var(--header-height);
-    background-color: var(--background-color-2);
+    background-color: var(--bg-dark-2);
     justify-content: space-between;
     align-items: center;
-    overflow: hidden;
 }
 
 .brand {
     display: flex;
-
 }
 
 .brand img {
     height: 40px;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    /* or simply margin: auto 0; */
-
-
 }
 
-/* Download button stays same (desktop) */
 .download-app .download-btn {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
     border: none;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
     text-decoration: none;
-    font-weight: var(--font-weight-2);
-    color: var(--text-color-1);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-black);
     background: linear-gradient(90deg,
             var(--bg-cta) 0%,
             var(--bg-cta) 50%,
-            #cbee69 65%,
+            var(--accent-green) 65%,
             var(--bg-cta) 100%);
     background-size: 200% 200%;
     background-position: right center;
-    transition: background-position 0.5s ease, transform 0.3s ease;
+    transition: background-position var(--transition-slow), transform var(--transition-normal);
     cursor: pointer;
 }
 
 .download-app .download-btn:hover {
     background-position: left center;
+    transform: translateY(-2px);
 }
 
+.download-app .download-btn:active {
+    transform: translateY(0);
+}
 
-/* === ✅ MOBILE RESPONSIVENESS FIX === */
+/* Mobile Header */
 @media (max-width: 768px) {
-
     .header-nav {
-        padding: 1.5rem 1rem;
-        /* Reduce large side padding */
+        padding: 1rem;
         height: auto;
-        /* Allow auto height so stacking doesn't squeeze */
         flex-direction: column;
-        /* Stack logo + button vertically */
         gap: 0.75rem;
         text-align: center;
     }
 
+    .brand {
+        width: 100%;
+        justify-content: center;
+    }
+
     .brand img {
         height: 36px;
-        /* Slightly smaller logo for mobile */
-        margin-left: 25px;
+    }
+
+    .download-app {
+        width: 100%;
     }
 
     .download-app .download-btn {
         width: 100%;
-        /* Make full width button */
         justify-content: center;
         padding: 0.9rem 1rem;
-        /* Slightly larger tap size */
-        font-size: 1rem;
+        font-size: var(--font-size-base);
     }
 }
 
 /*
-        ########################################################################
-        ||                                                                    ||
-        ||                               MAIN CSS                             ||
-        ||                                                                    ||
-        #######################################################################
-        */
-
+    ################################################################
+    ||                      SOCIAL SIDEBAR CSS                    ||
+    ################################################################
+*/
 
 .side {
     position: fixed;
     width: 48px;
-    height: 240px;
+    height: auto;
     right: 0;
     top: 214px;
     z-index: 100;
     border-radius: 15px;
+    overflow: visible;
+}
+
+.side ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .side ul li {
     width: 48px;
     height: 48px;
-    float: left;
     position: relative;
-    border-bottom: 1px solid #444;
-    text-decoration: none;
+    border-bottom: 1px solid var(--border-gray);
+}
+
+.side ul li:last-child {
+    border-bottom: none;
 }
 
 .side ul li .side2box {
@@ -187,47 +275,60 @@ header {
     height: 48px;
     top: 0;
     right: 0;
-    transition: all 0.3s;
-    background: var(--background-color-2);
-    opacity: 0.8;
-    filter: Alpha(opacity=80);
-    color: #fff;
-    font: 14px/48px "";
-    overflow: hidden;
+    transition: all var(--transition-normal);
+    background: var(--bg-dark-2);
+    opacity: 0.9;
+    color: var(--text-white);
     display: flex;
     align-items: center;
-    flex-direction: row;
     justify-content: center;
+    border-radius: 8px;
+}
+
+.side ul li .side2box:hover {
+    opacity: 1;
+    transform: translateX(-4px);
 }
 
 .side ul li .side2box img {
-    width: 40px;
+    width: 32px;
+    height: 32px;
 }
 
-.side ul li img {
-    float: left;
+@media (max-width: 768px) {
+    .side {
+        width: 40px;
+        top: 140px;
+    }
+
+    .side ul li,
+    .side ul li .side2box {
+        width: 40px;
+        height: 40px;
+    }
+
+    .side ul li .side2box img {
+        width: 28px;
+        height: 28px;
+    }
 }
 
 /*
-        ################################################################
-        ||                                                            ||
-        ||                         SWIPER CSS                         ||
-        ||                                                            ||
-        ################################################################
-        */
+    ################################################################
+    ||                      PROMOTIONAL SLIDER                    ||
+    ################################################################
+*/
 
-
-/* Swiper Section Wrapper */
 .swiper-section {
     user-select: none;
-    padding: 1.5rem 6.5rem;
+    padding: var(--section-padding);
 }
 
 .swiper-section .swiper {
-    border-radius: 1.5rem;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
 }
 
-/* Banner Content Positioning (Desktop) */
 .banner-content {
     position: absolute;
     top: clamp(3rem, 10vw, 10rem);
@@ -237,81 +338,73 @@ header {
 }
 
 .banner-content .banner-text-1 {
-    font-size: clamp(1.4rem, 2.5vw, var(--font-size-1));
-    font-weight: var(--font-weight-1);
+    font-size: clamp(1.4rem, 2.5vw, 1.5rem);
+    font-weight: var(--font-weight-light);
     line-height: 1.2;
     color: #ffb347;
-    /* warm gradient tone */
-    text-shadow:
-        0 0 8px rgba(255, 179, 71, 0.6),
-        0 2px 4px rgba(0, 0, 0, 0.8);
+    text-shadow: 0 0 8px rgba(255, 179, 71, 0.6), 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .banner-content .banner-text-2 {
-    font-size: clamp(1rem, 1.8vw, var(--font-size-2));
-    font-weight: var(--font-weight-2);
+    font-size: clamp(1rem, 1.8vw, 2.75rem);
+    font-weight: var(--font-weight-bold);
     margin-top: 0.4rem;
     color: #b4ff9f;
-    text-shadow:
-        0 0 8px rgba(180, 255, 159, 0.5),
-        0 2px 4px rgba(0, 0, 0, 0.8);
+    text-shadow: 0 0 8px rgba(180, 255, 159, 0.5), 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-
-/* CTA Button */
 .banner-content .button {
     margin-top: 1.5rem;
-    padding: .75rem 1.5rem;
+    padding: 0.75rem 1.5rem;
     border: none;
-    border-radius: 0.75rem;
-    font-weight: var(--font-weight-2);
-    background: linear-gradient(104deg, #cbee69 3.97%, var(--bg-cta) 101.83%);
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-black);
+    background: linear-gradient(104deg, var(--accent-green) 3.97%, var(--bg-cta) 101.83%);
     background-size: 200% 200%;
     background-position: right center;
     cursor: pointer;
-    transition: background-position .5s ease, transform .3s ease;
+    transition: background-position var(--transition-slow), transform var(--transition-normal);
 }
 
 .banner-content .button:hover {
     background-position: left center;
+    transform: scale(1.05);
 }
 
-/* Banner Images */
 .swiper-slide img {
     width: 100%;
     height: clamp(16rem, 40vw, 26.25rem);
     object-fit: cover;
-    border-radius: 1.5rem;
+    border-radius: var(--radius-lg);
 }
 
-/* Pagination */
 #swiper-1 .swiper-pagination {
     bottom: 2rem;
 }
 
 #swiper-1 .swiper-pagination-bullet {
-    margin: 0 .25rem;
+    margin: 0 0.25rem;
     opacity: 1;
     background-color: rgba(255, 255, 255, 0.4);
-    width: .45rem;
-    height: .45rem;
+    width: 0.45rem;
+    height: 0.45rem;
 }
 
 #swiper-1 .swiper-pagination-bullet-active {
-    background: linear-gradient(104deg, #d0e98c 3.97%, #a6ec95 101.83%);
-    width: .55rem;
-    height: .55rem;
+    background: linear-gradient(104deg, var(--accent-green-light) 3.97%, var(--accent-green-bright) 101.83%);
+    width: 0.55rem;
+    height: 0.55rem;
 }
 
-/* ✅ Mobile Responsive */
 @media (max-width: 768px) {
     .swiper-section {
-        padding: 1rem;
+        padding: var(--section-padding-mobile);
     }
 
     .swiper-slide img {
         object-position: right center;
-        opacity: 0.3;
+        opacity: 0.4;
     }
 
     #swiper-1 .swiper-pagination {
@@ -322,59 +415,104 @@ header {
         position: relative;
     }
 
-    .slide-a::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 1.5rem;
-    }
-
     .banner-content {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 100%;
+        width: 90%;
+        max-width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding: 20px;
+        padding: 1rem;
         z-index: 1;
-        /* Minimal shadow */
-        text-shadow: 0 3px 8px rgba(0, 0, 0, 0.55);
+        text-shadow: 0 3px 8px rgba(0, 0, 0, 0.7);
     }
 
     .banner-content .banner-text-1 {
         font-size: 1.3rem;
-        font-weight: bold;
-        white-space: nowrap;
+        font-weight: var(--font-weight-bold);
+        white-space: normal;
     }
 
     .banner-content .banner-text-2 {
-        font-size: .9rem;
-        white-space: nowrap;
+        font-size: 0.9rem;
+        white-space: normal;
+        margin-top: 0.5rem;
     }
 
     .banner-content .button {
-        margin: 1.5rem auto 0 auto;
-        width: 70%;
+        margin: 1.5rem auto 0;
+        width: 80%;
+        max-width: 280px;
     }
 }
 
 /*
-        ################################################################
-        ||                                                            ||
-        ||                      GAME CATEGORY CSS                     ||
-        ||                                                            ||
-        ################################################################
-        */
+    ################################################################
+    ||                       SEO CONTENT SECTION                  ||
+    ################################################################
+*/
 
-/* === Game Category Section === */
+.seo-content {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    /*
+    padding: 2rem 6.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    */
+}
+
+.seo-content h1 {
+    font-size: var(--font-size-xl);
+    margin-bottom: 1rem;
+    color: var(--text-white);
+    line-height: 1.3;
+}
+
+.seo-content p {
+    line-height: 1.8;
+    color: var(--text-gray);
+    margin-bottom: 1rem;
+    font-size: var(--font-size-base);
+}
+
+.seo-content strong {
+    color: var(--text-white);
+    font-weight: var(--font-weight-bold);
+}
+
+@media (max-width: 768px) {
+    .seo-content {
+        padding: 1.5rem 1rem;
+    }
+
+    .seo-content h1 {
+        font-size: var(--font-size-lg);
+    }
+
+    .seo-content p {
+        font-size: 0.95rem;
+    }
+}
+
+/*
+    ################################################################
+    ||                   GAME CATEGORY NAVIGATION                 ||
+    ################################################################
+*/
+
 .game-category-section {
     user-select: none;
-    padding: 1.5rem 6.5rem;
+    padding: var(--section-padding);
     position: relative;
     overflow: visible;
 }
@@ -383,16 +521,14 @@ header {
     position: relative;
 }
 
-/* Outer wrapper */
 .game-category {
     padding: 1rem;
     background: #323232;
-    border-radius: 0.75rem;
+    border-radius: var(--radius-md);
     overflow-x: auto;
     position: relative;
 }
 
-/* Main category navigation */
 .category {
     display: flex;
     flex-wrap: nowrap;
@@ -404,49 +540,59 @@ header {
     scrollbar-width: none;
 }
 
+.category::-webkit-scrollbar {
+    display: none;
+}
+
+.category .category-1 {
+    display: flex;
+    gap: 1rem;
+}
+
 .category .button {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
     border: none;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
     text-decoration: none;
-    font-weight: var(--font-weight-2);
-    color: var(--text-color-1);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-black);
     background: linear-gradient(90deg,
             var(--bg-cta) 0%,
             var(--bg-cta) 50%,
-            #cbee69 65%,
+            var(--accent-green) 65%,
             var(--bg-cta) 100%);
     background-size: 200% 200%;
     background-position: right center;
-    transition: background-position 0.5s ease, transform 0.3s ease;
+    transition: background-position var(--transition-slow), transform var(--transition-normal);
     cursor: pointer;
+    white-space: nowrap;
 }
 
-/* Hover effect */
 .category .button:hover {
     background-position: left center;
 }
 
 .category .button img {
     height: 1.5rem;
+    width: 1.5rem;
 }
 
-/* Search Button */
 .category .search-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2.6rem;
+    min-width: 2.6rem;
     height: 2.6rem;
-    background: var(--background-color-1);
-    border-radius: 0.5rem;
+    background: var(--bg-dark-1);
+    border-radius: var(--radius-sm);
     border: none;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
+    transition: background var(--transition-normal), transform var(--transition-fast);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .category .search-btn:hover {
@@ -454,165 +600,225 @@ header {
     transform: scale(1.05);
 }
 
-/* CSS RESPONSIVENESS */
-@media (max-width: 768px) {
+.category .search-btn:focus,
+.category .search-btn:active {
+    outline: none;
+    background: var(--bg-dark-1);
+}
 
+@media (max-width: 1575px) {
+    .game-category {
+        padding: 0.75rem;
+        border-radius: 0.6rem;
+    }
+
+    .category {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .category .category-1 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .category .button {
+        justify-content: center;
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
     .game-category-section {
-        padding: 1rem;
+        padding: var(--section-padding-mobile);
     }
 
     .game-category {
         padding: 0.75rem;
         border-radius: 0.6rem;
     }
+
+    .category {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .category .category-1 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .category .button {
+        justify-content: center;
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
 }
 
 /*
-        ################################################################
-        ||                                                            ||
-        ||                      LIVE SEARCH CSS                       ||
-        ||                                                            ||
-        ################################################################
-        */
+    ################################################################
+    ||                      LIVE SEARCH                           ||
+    ################################################################
+*/
 
-/* ✅ Wrap both input + button in flex */
 .game-search-box {
     display: flex;
     align-items: center;
-    width: 16rem;
-    height: 2.6rem;
+    gap: 0.5rem;
     margin-left: auto;
     position: relative;
-    overflow: visible;
 }
-
-.search-btn {
-    -webkit-tap-highlight-color: transparent;
-    /* remove ugly default highlight */
-}
-
-.search-btn:focus,
-.search-btn:active,
-.search-btn:focus-visible {
-    outline: none;
-    box-shadow: none;
-    background: none;
-    border: none;
-}
-
 
 #game-search {
     width: 16rem;
     height: 2.6rem;
     padding: 0 1rem;
-    margin-left: .2rem;
-    background: var(--background-color-1);
+    background: var(--bg-dark-1);
     border: none;
-    border-radius: 0.5rem;
-    color: #fff;
-    font-size: 0.875rem;
+    border-radius: var(--radius-sm);
+    color: var(--text-white);
+    font-size: var(--font-size-sm);
+    transition: border var(--transition-fast);
 }
 
 #game-search:focus {
     outline: none;
-    border: 1px solid #fff;
+    border: 2px solid var(--accent-green);
 }
 
-.search-wrapper {
-    position: relative;
-    width: 260px;
-    margin-top: 0.75rem;
-    margin-left: auto;
-    /* stays aligned right */
-}
-
-#live-search {
-    width: 100%;
-    padding: 0.7rem;
-    font-size: 0.9rem;
-    border-radius: 0.5rem;
-    border: none;
-    outline: none;
-}
-
-/* ✅ Dropdown no longer expands container! */
-/* Dropdown appears below but floating */
 #search-results {
     position: absolute;
     top: calc(100% + 6px);
     right: 0;
     width: 16rem;
-
-    background: #2b2b2b;
-    border-radius: 0.5rem;
-    border: 1px solid #444;
-    max-height: 220px;
+    background: var(--bg-dark-2);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-gray);
+    max-height: 280px;
     overflow-y: auto;
     z-index: 99999;
-
     margin: 0;
     padding: 0;
     list-style: none;
     display: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 #search-results li {
-    padding: 0.65rem;
-    font-size: 0.85rem;
+    padding: 0.75rem 1rem;
+    font-size: var(--font-size-sm);
     cursor: pointer;
     border-bottom: 1px solid #3a3a3a;
+    transition: background var(--transition-fast);
 }
 
 #search-results li:last-child {
     border-bottom: none;
 }
 
-#search-results li:hover {
+#search-results li:hover,
+#search-results li:focus {
     background: #3e3e3e;
 }
 
+@media (max-width: 1575px) {
+    .game-search-box {
+        width: 100%;
+    }
 
-/* ✅ Modal Background */
+    #game-search {
+        width: 100%;
+    }
+
+    #search-results {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .game-search-box {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #game-search {
+        width: 100%;
+    }
+
+    #search-results {
+        width: 100%;
+        right: auto;
+        left: 0;
+    }
+}
+
+/*
+    ################################################################
+    ||                      GAME MODAL                            ||
+    ################################################################
+*/
+
 .modal {
     display: none;
     position: fixed;
-    z-index: 2000;
+    z-index: 10000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0, 0, 0, 0.85);
     justify-content: center;
     align-items: center;
 }
 
-/* ✅ Modal Box */
 .modal-content {
     background: #1a1a1a;
-    padding: 1.5rem;
-    border-radius: 0.75rem;
+    padding: 2rem;
+    border-radius: var(--radius-md);
     text-align: center;
     width: 90%;
-    max-width: 380px;
-    border: 1px solid #444;
+    max-width: 420px;
+    border: 1px solid var(--border-gray);
+    position: relative;
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .modal-content img {
     width: 100%;
-    border-radius: 0.5rem;
+    max-width: 300px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1rem;
+    overflow-y: auto;
+    max-height: 90vh;
 }
 
 .modal-content h2 {
-    margin: 1rem 0 0.25rem;
-    color: #fff;
+    margin: 1rem 0 0.5rem;
+    color: var(--text-white);
+    font-size: var(--font-size-lg);
 }
 
 .modal-content p {
     color: #ccc;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
-/* ✅ Close Button */
 .close-modal {
     position: absolute;
     top: 1rem;
@@ -620,195 +826,178 @@ header {
     font-size: 2rem;
     color: white;
     cursor: pointer;
+    transition: color var(--transition-fast);
 }
 
-/* ✅ Play Button */
+.close-modal:hover,
+.close-modal:focus {
+    color: var(--accent-green);
+}
+
 .play-btn {
     background: linear-gradient(90deg, #92ff45, #bbff72);
     border: none;
-    color: #000;
-    padding: 0.75rem 1.25rem;
-    border-radius: 0.5rem;
+    color: var(--text-black);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
     width: 100%;
+    transition: transform var(--transition-fast);
 }
 
-
+.play-btn:hover {
+    transform: scale(1.05);
+}
 
 /*
-        ################################################################
-        ||                                                            ||
-        ||                       TOP PICKS CSS                        ||
-        ||                                                            ||
-        ################################################################
-        */
+    ################################################################
+    ||                      TOP PICKS SECTION                     ||
+    ################################################################
+*/
 
 .top-picks-section {
     user-select: none;
-    padding: 1.5rem 6.5rem;
+    padding: var(--section-padding);
 }
 
 .top-picks-title {
     display: flex;
     justify-content: space-between;
-    /* space between h2 and link */
     align-items: center;
-    /* vertically center */
-    margin: 0 0 1rem 0;
+    margin: 0 0 1.5rem 0;
 }
 
 .top-picks-title h2 {
-    font-size: medium;
+    font-size: var(--font-size-lg);
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    /* space between icon and text */
 }
 
 .top-picks-title a {
     font-size: 0.9rem;
     text-decoration: none;
-    color: var(--accent, #34d399);
+    color: #34d399;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color var(--transition-normal);
 }
 
 .top-picks-title a:hover {
-    color: var(--accent-2, #ffd166);
+    color: #ffd166;
 }
 
 .top-picks-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, 196px);
-    /* Fixed card width */
     grid-auto-rows: 16.063rem;
-    /* Fixed card height */
-    gap: 1.2rem;
+    gap: 1rem;
     justify-content: center;
-    /* Center the grid */
 }
 
-/* Card appearance */
 .top-picks-grid .grid-img,
 .top-picks-grid .grid-img-banner {
     width: 100%;
     height: 100%;
-    border-radius: 0.75rem;
+    border-radius: var(--radius-md);
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-normal);
     cursor: pointer;
 }
 
-/* Hover effect */
-.top-picks-grid .grid-img:hover {
+.top-picks-grid .grid-img:hover,
+.top-picks-grid .grid-img-banner:hover {
     transform: scale(1.05);
 }
 
-/* ✅ Banner spans 2 columns AND 2 rows */
 .top-picks-grid .grid-img-banner {
     grid-column: span 2;
 }
 
-/* ✅ Responsive layout — fixed (replace existing mobile rules for .top-picks-grid) */
 @media (max-width: 768px) {
     .top-picks-section {
-        padding: 1.5rem 1rem;
+        padding: var(--section-padding-mobile);
     }
 
     .top-picks-title a {
-        font-weight: var(--font-weight-2)
+        font-weight: var(--font-weight-bold);
     }
 
     .top-picks-grid {
         grid-template-columns: repeat(2, 1fr);
-        /* let rows size to content instead of forcing a fixed row height */
         grid-auto-rows: auto;
         gap: 0.75rem;
-        padding: 0 1rem;
-        align-items: start;
-        /* important: prevent items from stretching & overlapping */
+        padding: 0;
     }
 
-    /* Banner becomes full width and flows naturally */
     .top-picks-grid .grid-img-banner {
         grid-column: 1 / -1;
-        /* full width */
         width: 100%;
         height: auto;
-        /* let image decide height */
-        display: block;
-        object-fit: cover;
-        /* cover behavior if aspect ratio differs */
-        align-self: start;
-        /* ensure banner sits at top of its grid cell */
+        aspect-ratio: 2 / 1;
     }
 
-    /* Regular grid items keep a consistent height but won't overlap banner */
     .top-picks-grid .grid-img {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-        align-self: start;
-        /* prevent vertical stretch that causes overlap */
+        height: auto;
+        aspect-ratio: 3 / 4;
     }
 }
 
 /*
-        ################################################################
-        ||                                                            ||
-        ||                      PROMOTIONS CSS                        ||
-        ||                                                            ||
-        ################################################################
-        */
+    ################################################################
+    ||                    PROMOTIONS SECTION                      ||
+    ################################################################
+*/
 
 .promotions-section {
     user-select: none;
-    padding: 1.5rem 6.5rem;
+    padding: var(--section-padding);
 }
 
 .promotions-title {
     display: flex;
     justify-content: space-between;
-    /* evenly space out h2 and link */
     align-items: center;
-    /* vertically center */
-    margin: 0 0 1rem 0;
+    margin: 0 0 1.5rem 0;
 }
 
 .promotions-title h2 {
-    font-size: medium;
+    font-size: var(--font-size-lg);
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    /* space between icon and text */
 }
 
 .promotions-title a {
     font-size: 0.9rem;
     text-decoration: none;
-    color: var(--accent, #34d399);
+    color: #34d399;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color var(--transition-normal);
 }
 
 .promotions-title a:hover {
-    color: var(--accent-2, #ffd166);
+    color: #ffd166;
 }
-
 
 .promotions-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(12rem, 2fr));
-    gap: 1rem;
-
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.2rem;
     justify-content: center;
 }
 
 .promotions-grid img {
     width: 100%;
-    border-radius: .75rem;
+    border-radius: var(--radius-md);
+    transition: transform var(--transition-normal);
+    cursor: pointer;
+}
+
+.promotions-grid img:hover {
+    transform: scale(1.05);
 }
 
 .promo-modal {
@@ -818,90 +1007,100 @@ header {
     left: 0;
     width: 100%;
     height: 100vh;
-    /* Changed to 100vh */
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 10000;
     overflow: hidden;
-    /* Added overflow hidden */
 }
 
 .promo-modal-content {
-    background-color: var(--background-color-3);
-    border-radius: .75rem;
+    background-color: var(--bg-dark-3);
+    border-radius: var(--radius-md);
     position: absolute;
-    /* Changed to absolute */
     top: 50%;
-    /* Added top 50% */
     left: 50%;
-    /* Added left 50% */
     transform: translate(-50%, -50%);
-    /* Added transform */
-    padding: 20px;
+    padding: 2rem;
     border: 1px solid #888;
-    width: 50%;
+    width: 90%;
+    max-width: 600px;
     max-height: 90vh;
-    /* Added max-height */
     overflow-y: auto;
-    /* Added overflow-y auto */
+    animation: modalFadeIn 0.3s ease;
 }
 
 .promo-modal-content img {
     width: 50%;
-    border-radius: .5rem;
+    max-width: 300px;
+    border-radius: var(--radius-sm);
     display: block;
-    margin: 0 auto;
-    padding-bottom: 1.5rem;
+    margin: 0 auto 1.5rem;
+}
+
+.promo-modal-content h3 {
+    color: var(--text-white);
+    margin-bottom: 1rem;
+    font-size: var(--font-size-lg);
+}
+
+.promo-modal-content p {
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 1rem;
 }
 
 .promo-close-modal {
     color: #aaa;
     float: right;
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 2rem;
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    transition: color var(--transition-fast);
 }
 
 .promo-close-modal:hover,
 .promo-close-modal:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+    color: var(--accent-green);
 }
 
-/* Add this to prevent body scrolling when modal is open */
 body.modal-open {
     overflow: hidden;
+    height: 100vh;
 }
 
 @media (max-width: 768px) {
     .promotions-section {
-        padding: 1.5rem 1rem;
+        padding: var(--section-padding-mobile);
     }
 
     .promotions-title a {
-        font-weight: var(--font-weight-2)
+        font-weight: var(--font-weight-bold);
+    }
+
+    .promotions-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
     }
 
     .promo-modal-content {
-        width: 80%;
+        width: 90%;
+        padding: 1.5rem;
     }
 
     .promo-modal-content img {
-        width: 100%;
+        width: 80%;
     }
 }
 
 /*
-        ################################################################
-        ||                                                            ||
-        ||                     RANDOM GAME CSS                        ||
-        ||                                                            ||
-        ################################################################
-        */
+    ################################################################
+    ||                    GAME CAROUSEL                           ||
+    ################################################################
+*/
 
 .game-carousel {
     user-select: none;
     width: 100%;
-    padding: 1.5rem 6.5rem;
+    padding: var(--section-padding);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -913,28 +1112,36 @@ body.modal-open {
 }
 
 .game-carousel-title {
-    margin: 0 0 1rem 0;
+    margin: 0 0 1.5rem 0;
     text-align: center;
 }
 
 .game-carousel-title h2 {
-    font-size: x-large;
+    font-size: var(--font-size-xl);
+    margin-bottom: 0.5rem;
+}
+
+.game-carousel-title p {
+    color: var(--text-gray);
 }
 
 .game-carousel .swiper-wrapper {
     padding-top: 1.5rem;
 }
 
-/* Default Slide Size (Desktop View) */
 .game-carousel .swiper-slide {
-    background: #1e1e1e;
+    background: var(--bg-dark-1);
     border-radius: 20px;
     width: 240px;
     height: 340px;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-normal);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
     cursor: pointer;
+}
+
+.game-carousel .swiper-slide:hover {
+    transform: translateY(-8px);
 }
 
 .game-carousel .swiper-slide img {
@@ -949,14 +1156,12 @@ body.modal-open {
     transform: scale(1.1);
 }
 
-/* Remove default absolute positioning */
 .swiper-button-prev,
 .swiper-button-next {
     position: static !important;
     margin: 0;
 }
 
-/* Center container under carousel */
 .carousel-nav {
     display: flex;
     justify-content: center;
@@ -964,10 +1169,9 @@ body.modal-open {
     margin-top: 2.5rem;
 }
 
-/* Style buttons */
 .carousel-nav button {
-    background: #2b2b2b;
-    color: #d0e98c;
+    background: var(--bg-dark-2);
+    color: var(--accent-green-light);
     border: none;
     border-radius: 100px;
     padding: 0.6rem 1.5rem;
@@ -976,18 +1180,15 @@ body.modal-open {
     transition: 0.25s ease-in-out;
 }
 
-/* Hover effect */
 .carousel-nav button:hover {
-    background: #cbee69;
-    color: #1e1e1e;
+    background: var(--accent-green);
+    color: var(--bg-dark-1);
     transform: scale(1.05);
 }
 
-/* ✅ Tablet Responsive */
 @media (max-width: 768px) {
     .game-carousel {
-        padding: 1.5rem 2rem;
-        /* reduce padding so slider doesn’t overflow */
+        padding: 1.5rem 1rem;
     }
 
     .game-carousel .swiper-slide {
@@ -995,20 +1196,20 @@ body.modal-open {
         height: 260px;
     }
 
-    .game-carousel .swiper-slide img {
-        opacity: 1;
+    .carousel-nav {
+        gap: 3rem;
+        margin-top: 2rem;
+    }
+
+    .carousel-nav button {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.85rem;
     }
 }
 
-/* ✅ Mobile Responsive */
 @media (max-width: 480px) {
     .game-carousel {
-        padding: 1.25rem 1rem;
-        /* tighter padding on mobile */
-    }
-
-    .game-carousel .swiper {
-        padding-bottom: 60px;
+        padding: 1.25rem 0.5rem;
     }
 
     .game-carousel .swiper-slide {
@@ -1016,345 +1217,289 @@ body.modal-open {
         height: 220px;
     }
 
-    .game-carousel .swiper-slide img {
-        opacity: 1;
+    .carousel-nav {
+        gap: 2rem;
     }
 
     .carousel-nav button {
         padding: 0.5rem 1rem;
         font-size: 0.8rem;
     }
-
-    .swiper-button-prev,
-    .swiper-button-next {
-        width: 32px;
-        height: 32px;
-    }
 }
 
 /*
-        ################################################################
-        ||                                                            ||
-        ||                          SLOTS CSS                         ||
-        ||                                                            ||
-        ################################################################
-        */
+    ################################################################
+    ||                      SLOTS SECTION                         ||
+    ################################################################
+*/
 
 .slots-section {
     user-select: none;
-    padding: 1.5rem 6.5rem;
+    padding: var(--section-padding);
 }
 
 .slots-title {
     display: flex;
     justify-content: space-between;
-    /* space between h2 and link */
     align-items: center;
-    /* vertically center */
-    margin: 0 0 1rem 0;
+    margin: 0 0 1.5rem 0;
 }
 
 .slots-title h2 {
-    font-size: medium;
+    font-size: var(--font-size-lg);
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    /* space between icon and text */
 }
 
 .slots-title a {
     font-size: 0.9rem;
     text-decoration: none;
-    color: var(--accent, #34d399);
+    color: #34d399;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color var(--transition-normal);
 }
 
 .slots-title a:hover {
-    color: var(--accent-2, #ffd166);
+    color: #ffd166;
 }
 
 .slots-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, 196px);
-    /* Fixed card width */
     grid-auto-rows: 16.063rem;
-    /* Fixed card height */
-    gap: 1.2rem;
+    gap: 1rem;
     justify-content: center;
-    /* Center the grid */
 }
 
-/* Card appearance */
 .slots-grid .grid-img {
     width: 100%;
     height: 100%;
-    border-radius: 0.75rem;
+    border-radius: var(--radius-md);
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-normal);
     cursor: pointer;
 }
 
-/* Hover effect */
 .slots-grid .grid-img:hover {
     transform: scale(1.05);
 }
 
-/* ✅ Responsive layout — fixed (replace existing mobile rules for .top-picks-grid) */
 @media (max-width: 768px) {
     .slots-section {
-        padding: 1.5rem 1rem;
+        padding: var(--section-padding-mobile);
     }
 
     .slots-title a {
-        font-weight: var(--font-weight-2)
+        font-weight: var(--font-weight-bold);
     }
 
     .slots-grid {
         grid-template-columns: repeat(2, 1fr);
-        /* let rows size to content instead of forcing a fixed row height */
         grid-auto-rows: auto;
         gap: 0.75rem;
-        padding: 0 1rem;
-        align-items: start;
-        /* important: prevent items from stretching & overlapping */
+        padding: 0;
     }
 
-    /* Regular grid items keep a consistent height but won't overlap banner */
     .slots-grid .grid-img {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-        align-self: start;
-        /* prevent vertical stretch that causes overlap */
+        height: auto;
+        aspect-ratio: 3 / 4;
     }
 }
 
 /*
-        ################################################################
-        ||                                                            ||
-        ||                     FLYING GAMES CSS                       ||
-        ||                                                            ||
-        ################################################################
-        */
+    ################################################################
+    ||                   FLYING GAMES SECTION                     ||
+    ################################################################
+*/
 
 .flying-games-section {
     user-select: none;
-    padding: 1.5rem 6.5rem;
+    padding: var(--section-padding);
 }
 
 .flying-games-title {
     display: flex;
     justify-content: space-between;
-    /* space between h2 and link */
     align-items: center;
-    /* vertically center */
-    margin: 0 0 1rem 0;
+    margin: 0 0 1.5rem 0;
 }
 
 .flying-games-title h2 {
-    font-size: medium;
+    font-size: var(--font-size-lg);
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    /* space between icon and text */
 }
 
 .flying-games-title a {
     font-size: 0.9rem;
     text-decoration: none;
-    color: var(--accent, #34d399);
+    color: #34d399;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color var(--transition-normal);
 }
 
 .flying-games-title a:hover {
-    color: var(--accent-2, #ffd166);
+    color: #ffd166;
 }
 
 .flying-games-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, 196px);
-    /* Fixed card width */
     grid-auto-rows: 16.063rem;
-    /* Fixed card height */
-    gap: 1.2rem;
+    gap: 1rem;
     justify-content: center;
-    /* Center the grid */
 }
 
-/* Card appearance */
 .flying-games-grid .grid-img {
     width: 100%;
     height: 100%;
-    border-radius: 0.75rem;
+    border-radius: var(--radius-md);
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-normal);
     cursor: pointer;
 }
 
-/* Hover effect */
 .flying-games-grid .grid-img:hover {
     transform: scale(1.05);
 }
 
-/* ✅ Responsive layout — fixed (replace existing mobile rules for .top-picks-grid) */
 @media (max-width: 768px) {
     .flying-games-section {
-        padding: 1.5rem 1rem;
+        padding: var(--section-padding-mobile);
     }
 
     .flying-games-title a {
-        font-weight: var(--font-weight-2)
+        font-weight: var(--font-weight-bold);
     }
 
     .flying-games-grid {
         grid-template-columns: repeat(2, 1fr);
-        /* let rows size to content instead of forcing a fixed row height */
         grid-auto-rows: auto;
         gap: 0.75rem;
-        padding: 0 1rem;
-        align-items: start;
-        /* important: prevent items from stretching & overlapping */
+        padding: 0;
     }
 
-    /* Regular grid items keep a consistent height but won't overlap banner */
     .flying-games-grid .grid-img {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-        align-self: start;
-        /* prevent vertical stretch that causes overlap */
+        height: auto;
+        aspect-ratio: 3 / 4;
     }
 }
 
 /*
-        ################################################################
-        ||                                                            ||
-        ||                    SPINNING WHEELS CSS                     ||
-        ||                                                            ||
-        ################################################################
-        */
+    ################################################################
+    ||                  SPINNING WHEELS SECTION                   ||
+    ################################################################
+*/
 
 .spinning-wheels-section {
     user-select: none;
-    padding: 1.5rem 6.5rem;
+    padding: var(--section-padding);
     padding-bottom: 5rem;
 }
 
 .spinning-wheels-title {
     display: flex;
     justify-content: space-between;
-    /* space between h2 and link */
     align-items: center;
-    /* vertically center */
-    margin: 0 0 1rem 0;
+    margin: 0 0 1.5rem 0;
 }
 
 .spinning-wheels-title h2 {
-    font-size: medium;
+    font-size: var(--font-size-lg);
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    /* space between icon and text */
 }
 
 .spinning-wheels-title a {
     font-size: 0.9rem;
     text-decoration: none;
-    color: var(--accent, #34d399);
+    color: #34d399;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color var(--transition-normal);
 }
 
 .spinning-wheels-title a:hover {
-    color: var(--accent-2, #ffd166);
+    color: #ffd166;
 }
 
 .spinning-wheels-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, 196px);
-    /* Fixed card width */
     grid-auto-rows: 16.063rem;
-    /* Fixed card height */
-    gap: 1.2rem;
+    gap: 1rem;
     justify-content: center;
-    /* Center the grid */
 }
 
-/* Card appearance */
 .spinning-wheels-grid .grid-img {
     width: 100%;
     height: 100%;
-    border-radius: 0.75rem;
+    border-radius: var(--radius-md);
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-normal);
     cursor: pointer;
 }
 
-/* Hover effect */
 .spinning-wheels-grid .grid-img:hover {
     transform: scale(1.05);
 }
 
-/* ✅ Responsive layout — fixed (replace existing mobile rules for .top-picks-grid) */
 @media (max-width: 768px) {
     .spinning-wheels-section {
-        padding: 1.5rem 1rem;
+        padding: var(--section-padding-mobile);
+        padding-bottom: 3rem;
     }
 
     .spinning-wheels-title a {
-        font-weight: var(--font-weight-2)
+        font-weight: var(--font-weight-bold);
     }
 
     .spinning-wheels-grid {
         grid-template-columns: repeat(2, 1fr);
-        /* let rows size to content instead of forcing a fixed row height */
         grid-auto-rows: auto;
         gap: 0.75rem;
-        padding: 0 1rem;
-        align-items: start;
-        /* important: prevent items from stretching & overlapping */
+        padding: 0;
     }
 
-    /* Regular grid items keep a consistent height but won't overlap banner */
     .spinning-wheels-grid .grid-img {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-        align-self: start;
-        /* prevent vertical stretch that causes overlap */
+        height: auto;
+        aspect-ratio: 3 / 4;
     }
 }
 
 /*
-        ################################################################
-        ||                                                            ||
-        ||                        ABOUT US CSS                        ||
-        ||                                                            ||
-        ################################################################
-        */
+    ################################################################
+    ||                      ABOUT SECTION                         ||
+    ################################################################
+*/
 
 .about-section {
-    padding: 1.5rem 6.5rem;
+    padding: var(--section-padding);
 }
 
-/* Title */
 .about-title {
     display: flex;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .about-title h2 {
-    font-size: medium;
+    font-size: var(--font-size-lg);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-/* Desktop Layout */
 .about-content {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 3rem;
+    margin-bottom: 2rem;
 }
 
 .about-icon img {
@@ -1365,58 +1510,59 @@ body.modal-open {
 }
 
 .about-description {
-    width: 35rem;
-    max-width: 100%;
-    line-height: 1.6;
+    max-width: 600px;
+    line-height: 1.8;
 }
 
-.about-description h2 {
+.about-description h3 {
     margin-bottom: 1rem;
+    font-size: var(--font-size-lg);
 }
 
 .about-description p {
-    color: #969595;
+    color: var(--text-gray);
+    margin-bottom: 1rem;
 }
 
-/* Cards */
 .cards {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: 1.2rem;
     justify-content: center;
 }
 
 .card {
-    background: #2b2b2b;
-    border-radius: 0.75rem;
-    padding: 1rem;
-    width: 18.75rem;
+    background: var(--bg-dark-2);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 300px;
     text-align: center;
+    transition: transform var(--transition-normal);
+}
+
+.card:hover {
+    transform: translateY(-4px);
 }
 
 .card h3 {
-    font-size: small;
+    font-size: var(--font-size-base);
+    margin-bottom: 0.75rem;
 }
 
 .card p {
-    font-size: smaller;
-    color: #969595;
-    margin-top: 0.5rem;
+    font-size: var(--font-size-sm);
+    color: var(--text-gray);
     line-height: 1.6;
 }
 
-/* ✅ MOBILE RESPONSIVE */
 @media (max-width: 768px) {
-
     .about-section {
-        padding: 1.5rem 1.25rem;
-        /* reduce side padding */
+        padding: var(--section-padding-mobile);
     }
 
     .about-content {
         flex-direction: column;
-        /* stack image + text */
         text-align: center;
         gap: 1.5rem;
     }
@@ -1427,89 +1573,46 @@ body.modal-open {
 
     .about-icon img {
         width: 12rem;
-        /* slightly smaller icon */
+    }
+
+    .cards {
+        gap: 1rem;
     }
 
     .card {
         width: 100%;
-        /* cards stretch full width */
+        max-width: 100%;
     }
 }
 
-/* ✅ EXTRA SMALL PHONES */
 @media (max-width: 430px) {
     .about-icon img {
         width: 9rem;
     }
 
-    .about-description {
+    .about-description h3 {
+        font-size: var(--font-size-md);
+    }
+
+    .about-description p {
         font-size: 0.9rem;
     }
 }
 
-
 /*
-        ################################################################
-        ||                                                            ||
-        ||                         FOOTER CSS                         ||
-        ||                                                            ||
-        ################################################################
-        */
+    ################################################################
+    ||                         FOOTER                             ||
+    ################################################################
+*/
 
-/* Scroll to Top Button (Debug Mode – guaranteed visible) */
-#scrollTopBtn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background: rgb(33, 128, 41);
-    /* TEMP for visibility */
-    color: white;
-    font-size: 2rem;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-
-    display: flex;
-    /* Force visible */
-    justify-content: center;
-    align-items: center;
-
-    z-index: 999999999;
-    /* Forces button above EVERYTHING */
-
-    /* Floating animation */
-    animation: floatUpDown 1.4s ease-in-out infinite;
-}
-
-/* ✨ Floating effect keyframes */
-@keyframes floatUpDown {
-    0% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-6px);
-    }
-
-    100% {
-        transform: translateY(0);
-    }
-}
-
-
-/* Footer Base */
 .site-footer {
-    background: var(--background-color-3);
-    /* dark purple-black tone */
+    background: var(--bg-dark-3);
     color: #f5f5f5;
     padding: 3rem 2rem;
     text-align: center;
     line-height: 1.6;
 }
 
-/* Footer Badges */
 .footer-badges {
     display: flex;
     justify-content: center;
@@ -1523,10 +1626,10 @@ body.modal-open {
     align-items: center;
     gap: 0.75rem;
     background: rgba(255, 255, 255, 0.08);
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 1.25rem;
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 0.75rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: var(--radius-md);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
     min-width: 200px;
 }
 
@@ -1535,37 +1638,33 @@ body.modal-open {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Badge Text */
 .badge-title {
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
     margin: 0;
 }
 
 .badge-sub {
-    font-size: 0.875rem;
-    color: #969595;
+    font-size: var(--font-size-sm);
+    color: var(--text-gray);
     margin: 0;
 }
 
-/* Footer Info Text */
 .footer-info {
     max-width: 800px;
     margin: 0 auto 1.5rem;
-    color: #969595;
+    color: var(--text-gray);
     font-size: 0.95rem;
 }
 
-/* Footer Bottom */
 .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin-top: 2rem;
     padding-top: 1rem;
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
     color: #aaa;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
     .footer-badges {
         flex-direction: column;
@@ -1574,11 +1673,71 @@ body.modal-open {
 
     .badge {
         width: 90%;
+        max-width: 320px;
         justify-content: center;
     }
 
     .footer-info {
         font-size: 0.9rem;
         padding: 0 1rem;
+    }
+}
+
+/*
+    ################################################################
+    ||                   SCROLL TO TOP BUTTON                     ||
+    ################################################################
+*/
+
+#scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--bg-cta);
+    color: var(--text-white);
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform var(--transition-normal), background var(--transition-normal);
+    animation: floatUpDown 1.4s ease-in-out infinite;
+}
+
+#scrollTopBtn:hover {
+    background: var(--accent-green);
+    transform: translateY(-4px);
+    animation: none;
+}
+
+#scrollTopBtn:active {
+    transform: translateY(0);
+}
+
+@keyframes floatUpDown {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    #scrollTopBtn {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
     }
 }
