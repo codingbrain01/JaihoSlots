@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .top-picks-section {
+            padding: 1.5rem 6.5rem;
+        }
+
+        .top-picks-title {
+            display: flex;
+            justify-content: space-between;
+            /* space between h2 and link */
+            align-items: center;
+            /* vertically center */
+            margin: 0 0 1rem 0;
+        }
+
+        .top-picks-title h2 {
+            font-size: medium;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            /* space between icon and text */
+        }
+
+        .top-picks-title a {
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: var(--accent, #34d399);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        /* ✅ Desktop (unchanged, pixel-perfect) */
+        .top-picks-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 196px);
+            grid-template-rows: repeat(2, 257px);
+            gap: 1rem;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        /* Banner Card */
+        .top-picks-grid .grid-img-banner {
+            width: 408px;
+            height: 257px;
+            border-radius: 0.75rem;
+            object-fit: cover;
+            grid-column: span 2;
+        }
+
+        /* Regular Cards */
+        .top-picks-grid .grid-img {
+            width: 196px;
+            height: 257px;
+            border-radius: 0.75rem;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .top-picks-grid .grid-img:hover {
+            transform: scale(1.05);
+        }
+
+
+        /* ✅ TABLETS (Shrink down while keeping structure) */
+        @media (max-width: 1200px) {
+            .top-picks-grid {
+                transform: scale(0.9);
+                transform-origin: center;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .top-picks-grid {
+                transform: scale(0.8);
+            }
+        }
+
+        /* ✅ MOBILE — Switch to stacked responsive layout */
+        @media (max-width: 768px) {
+            .top-picks-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: auto;
+                gap: 0.75rem;
+                transform: none;
+                padding: 0 1rem;
+            }
+
+            .top-picks-grid .grid-img,
+            .top-picks-grid .grid-img-banner {
+                width: 100%;
+                height: auto;
+            }
+
+            .top-picks-grid .grid-img-banner {
+                grid-column: 1 / -1;
+                order: -1;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+        .top-picks-section2 {
+            padding: 1.5rem 6.5rem;
+        }
+
+        .top-picks-title2 {
+            display: flex;
+            justify-content: space-between;
+            /* space between h2 and link */
+            align-items: center;
+            /* vertically center */
+            margin: 0 0 1rem 0;
+        }
+
+        .top-picks-title2 h2 {
+            font-size: medium;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            /* space between icon and text */
+        }
+
+        .top-picks-title2 a {
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: var(--accent, #34d399);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .top-picks-title2 a:hover {
+            color: var(--accent-2, #ffd166);
+        }
+
+
+        .top-picks-grid2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 196px);
+            /* fixed card width */
+            grid-auto-rows: 257px;
+            /* fixed card height */
+            gap: 1rem;
+            justify-content: center;
+            /* center grid on desktop */
+        }
+
+        /* Card appearance */
+        .top-picks-grid2 .grid-img,
+        .top-picks-grid2 .grid-img-banner {
+            width: 100%;
+            height: 100%;
+            /* ensures fixed cell height is used */
+            border-radius: 0.75rem;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* Hover effect */
+        .top-picks-grid2 .grid-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Big banner card spans 2x2 */
+        .top-picks-grid2 .grid-img-banner {
+            grid-column: span 2;
+        }
+
+        /* ✅ MOBILE — Switch to stacked responsive layout */
+        @media (max-width: 768px) {
+            .top-picks-grid2 {
+                grid-template-rows: auto;
+                gap: 0.75rem;
+                transform: none;
+                padding: 0 1rem;
+            }
+
+            .top-picks-grid2 .grid-img,
+            .top-picks-grid2 .grid-img-banner {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="top-picks-section" id="games">
+        <div class="top-picks">
+            <div class="top-picks-title">
+                <h2><i class="fa-solid fa-star icon"></i> TOP PICKS</h2>
+                <a href="#">See more</a>
+            </div>
+            <div class="top-picks-wrapper">
+                <div class="top-picks-grid">
+                    <img class="grid-img-banner" src="images/banner_win.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_1.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_2.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_3.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_4.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_5.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_6.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_7.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_8.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_9.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_10.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_11.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_12.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_13.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_14.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="top-picks-section2" id="games">
+        <div class="top-picks2">
+            <div class="top-picks-title2">
+                <h2><i class="fa-solid fa-star icon"></i> TOP PICKS</h2>
+                <a href="#">See more</a>
+            </div>
+            <div class="top-picks-wrapper2">
+                <div class="top-picks-grid2">
+                    <img class="grid-img-banner" src="images/banner_win.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_1.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_2.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_3.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_4.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_5.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_6.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_7.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_8.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_9.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_10.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_11.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_12.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_13.png" alt="">
+                    <img class="grid-img" src="images/img_top-picks_14.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Basic layout HTML document">
+    <meta name="keywords" content="HTML, layout, basic, css">
+    <title>Basic CSS Layout</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: #35424a;
+            color: #ffffff;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        header li {
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+
+        .main {
+            display: block;
+            padding: 20px;
+            background: #ffffff;
+            margin-top: 20px;
+        }
+
+        .main .container {
+            display: block;
+            text-align: center;
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            background: #e2e2e2;
+        }
+
+        .container-2 {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            width: 80%;
+            height: 50vh;
+            margin: auto;
+            overflow: hidden;
+            background: #e2e2e2;
+            border: #e8491d 3px solid;
+        }
+
+        .box {
+            width: 200px;
+            height: 100px;
+            background-color: #e8491d;
+        }
+
+        .box-1 {
+            align-self: start;
+        }
+
+        .box-3 {
+            align-self: end;
+        }
+
+        @media (max-width: 710px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            header li {
+                display: block;
+                padding: 10px 0;
+            }
+        }
+
+
+        .game-carousel {
+            width: 100%;
+            padding: 4rem 0;
+            background: #1b1b1b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper {
+            width: 100%;
+            max-width: 1100px;
+            padding-top: 50px;
+            padding-bottom: 80px;
+        }
+
+        .swiper-slide {
+            background: #1e1e1e;
+            border-radius: 20px;
+            width: 240px;
+            height: 340px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            transition: transform 0.4s ease;
+        }
+
+        .swiper-slide:hover img {
+            transform: scale(1.1);
+        }
+
+        .swiper-pagination-bullet {
+            background: #d0e98c;
+            opacity: 0.8;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #a6ec95;
+        }
+
+        /* responsive tweaks */
+        @media (max-width: 768px) {
+            .swiper-slide {
+                width: 180px;
+                height: 260px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .swiper-slide {
+                width: 150px;
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>My Logo</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="main">
+        <div class="container">
+            <h1>Welcome to my basic CSS Layout Page</h1>
+            <div class="section-1">
+                <h2>This is the motherfucking section 1 Layout</h2>
+            </div>
+        </div>
+        <div class="container-2">
+            <div class="box box-1">
+                <h3>This is the box 1 Layout</h3>
+            </div>
+            <div class="box box-2">
+                <h3>This is the box 2 Layout</h3>
+            </div>
+            <div class="box box-3">
+                <h3>This is the box 3 Layout</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Swiper 3D Coverflow Slider -->
+    <section class="game-carousel" aria-label="Top slot games carousel">
+        <div class="swiper gameSwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="images/img_filler_1.png" alt="Book of Xmas slot game by Gamomat" loading="lazy">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/img_filler_2.png" alt="Magic Unicorn slot game" loading="lazy">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/img_filler_3.png" alt="Kitsune’s Scroll Sacred Flames slot game" loading="lazy">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/img_filler_4.png" alt="Wild Cash X9990 slot game by BGaming" loading="lazy">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/img_filler_5.png" alt="Book of Museum slot game by GameArt" loading="lazy">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/img_filler_6.png" alt="Buzzing Wilds slot game by Pragmatic Play" loading="lazy">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/img_filler_7.png" alt="Big Bass Bonanza slot game by Pragmatic Play"
+                        loading="lazy">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/img_filler_8.png" alt="Barn Festival slot game by Pragmatic Play" loading="lazy">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/img_filler_9.png" alt="Dancing Monkeys slot game" loading="lazy">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/img_filler_10.png" alt="Dancing Monkeys slot game" loading="lazy">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/img_filler_11.png" alt="Dancing Monkeys slot game" loading="lazy">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/img_filler_12.png" alt="Dancing Monkeys slot game" loading="lazy">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/img_filler_13.png" alt="Dancing Monkeys slot game" loading="lazy">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/img_filler_14.png" alt="Dancing Monkeys slot game" loading="lazy">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/img_filler_15.png" alt="Dancing Monkeys slot game" loading="lazy">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/img_filler_16.png" alt="Dancing Monkeys slot game" loading="lazy">
+                </div>
+            </div>
+
+            <div class="swiper-pagination" aria-hidden="true"></div>
+        </div>
+    </section>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper(".gameSwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            loop: true,
+            loopedSlides: 15, // match total number of slides for symmetry
+            spaceBetween: 0,
+            speed: 800, // smooth out transition
+            coverflowEffect: {
+                rotate: 0,       // keep flat
+                stretch: 10,      // perfect centering, no uneven offset
+                depth: 200,      // balanced depth perception
+                modifier: 1.5,   // reduced exaggeration for symmetry
+                slideShadows: false
+            },
+            autoplay: {
+                delay: 2500,                // autoplay interval
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    </script>
+</body>
+
+</html>

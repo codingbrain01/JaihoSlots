@@ -1,0 +1,1584 @@
+:root {
+    --bg-cta: #058C4D;
+    --background-color-1: #1E1E1E;
+    --background-color-2: #2B2B2B;
+    --background-color-3: #191919;
+    --text-color: #ffffff;
+    --text-color-1: #000000;
+    --header-height: 60px;
+    --font-weight-1: light;
+    --font-weight-2: bold;
+    --font-size-1: 24px;
+    --font-size-2: 44px;
+    font-family: "Noto Sans", Arial, sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 1.5px;
+
+    /* adjust the width to your liking */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #363636;
+    /* adjust the color to your liking */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    min-width: 430px;
+    background-color: var(--background-color-1);
+    color: var(--text-color);
+    scroll-behavior: smooth;
+    /* Prevent horizontal scroll */
+}
+
+.icon {
+    color: grey;
+    font-size: 1.25rem;
+    margin-right: 0.5rem;
+}
+
+/*
+        ################################################################
+        ||                                                            ||
+        ||                         HEADER CSS                         ||
+        ||                                                            ||
+        ################################################################
+        */
+
+/* === HEADER DESKTOP (unchanged) === */
+header {
+    user-select: none;
+    top: 0;
+    position: sticky;
+    z-index: 1000;
+}
+
+.header-nav {
+    width: 100%;
+    display: flex;
+    padding: 0 104px;
+    height: var(--header-height);
+    background-color: var(--background-color-2);
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+.brand {
+    display: flex;
+
+}
+
+.brand img {
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    /* or simply margin: auto 0; */
+
+
+}
+
+/* Download button stays same (desktop) */
+.download-app .download-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    border: none;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: var(--font-weight-2);
+    color: var(--text-color-1);
+    background: linear-gradient(90deg,
+            var(--bg-cta) 0%,
+            var(--bg-cta) 50%,
+            #cbee69 65%,
+            var(--bg-cta) 100%);
+    background-size: 200% 200%;
+    background-position: right center;
+    transition: background-position 0.5s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.download-app .download-btn:hover {
+    background-position: left center;
+}
+
+
+/* === ✅ MOBILE RESPONSIVENESS FIX === */
+@media (max-width: 768px) {
+
+    .header-nav {
+        padding: 1.5rem 1rem;
+        /* Reduce large side padding */
+        height: auto;
+        /* Allow auto height so stacking doesn't squeeze */
+        flex-direction: column;
+        /* Stack logo + button vertically */
+        gap: 0.75rem;
+        text-align: center;
+    }
+
+    .brand img {
+        height: 36px;
+        /* Slightly smaller logo for mobile */
+        margin-left: 25px;
+    }
+
+    .download-app .download-btn {
+        width: 100%;
+        /* Make full width button */
+        justify-content: center;
+        padding: 0.9rem 1rem;
+        /* Slightly larger tap size */
+        font-size: 1rem;
+    }
+}
+
+/*
+        ########################################################################
+        ||                                                                    ||
+        ||                               MAIN CSS                             ||
+        ||                                                                    ||
+        #######################################################################
+        */
+
+
+.side {
+    position: fixed;
+    width: 48px;
+    height: 240px;
+    right: 0;
+    top: 214px;
+    z-index: 100;
+    border-radius: 15px;
+}
+
+.side ul li {
+    width: 48px;
+    height: 48px;
+    float: left;
+    position: relative;
+    border-bottom: 1px solid #444;
+    text-decoration: none;
+}
+
+.side ul li .side2box {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    top: 0;
+    right: 0;
+    transition: all 0.3s;
+    background: var(--background-color-2);
+    opacity: 0.8;
+    filter: Alpha(opacity=80);
+    color: #fff;
+    font: 14px/48px "";
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.side ul li .side2box img {
+    width: 40px;
+}
+
+.side ul li img {
+    float: left;
+}
+
+/*
+        ################################################################
+        ||                                                            ||
+        ||                         SWIPER CSS                         ||
+        ||                                                            ||
+        ################################################################
+        */
+
+
+/* Swiper Section Wrapper */
+.swiper-section {
+    user-select: none;
+    padding: 1.5rem 6.5rem;
+}
+
+.swiper-section .swiper {
+    border-radius: 1.5rem;
+}
+
+/* Banner Content Positioning (Desktop) */
+.banner-content {
+    position: absolute;
+    top: clamp(3rem, 10vw, 10rem);
+    left: clamp(1rem, 6vw, 5rem);
+    z-index: 10;
+    max-width: 60%;
+}
+
+.banner-content .banner-text-1 {
+    font-size: clamp(1.4rem, 2.5vw, var(--font-size-1));
+    font-weight: var(--font-weight-1);
+    line-height: 1.2;
+    color: #ffb347;
+    /* warm gradient tone */
+    text-shadow:
+        0 0 8px rgba(255, 179, 71, 0.6),
+        0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.banner-content .banner-text-2 {
+    font-size: clamp(1rem, 1.8vw, var(--font-size-2));
+    font-weight: var(--font-weight-2);
+    margin-top: 0.4rem;
+    color: #b4ff9f;
+    text-shadow:
+        0 0 8px rgba(180, 255, 159, 0.5),
+        0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+
+/* CTA Button */
+.banner-content .button {
+    margin-top: 1.5rem;
+    padding: .75rem 1.5rem;
+    border: none;
+    border-radius: 0.75rem;
+    font-weight: var(--font-weight-2);
+    background: linear-gradient(104deg, #cbee69 3.97%, var(--bg-cta) 101.83%);
+    background-size: 200% 200%;
+    background-position: right center;
+    cursor: pointer;
+    transition: background-position .5s ease, transform .3s ease;
+}
+
+.banner-content .button:hover {
+    background-position: left center;
+}
+
+/* Banner Images */
+.swiper-slide img {
+    width: 100%;
+    height: clamp(16rem, 40vw, 26.25rem);
+    object-fit: cover;
+    border-radius: 1.5rem;
+}
+
+/* Pagination */
+#swiper-1 .swiper-pagination {
+    bottom: 2rem;
+}
+
+#swiper-1 .swiper-pagination-bullet {
+    margin: 0 .25rem;
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.4);
+    width: .45rem;
+    height: .45rem;
+}
+
+#swiper-1 .swiper-pagination-bullet-active {
+    background: linear-gradient(104deg, #d0e98c 3.97%, #a6ec95 101.83%);
+    width: .55rem;
+    height: .55rem;
+}
+
+/* ✅ Mobile Responsive */
+@media (max-width: 768px) {
+    .swiper-section {
+        padding: 1rem;
+    }
+
+    .swiper-slide img {
+        object-position: right center;
+        opacity: 0.3;
+    }
+
+    #swiper-1 .swiper-pagination {
+        display: none;
+    }
+
+    .swiper-slide {
+        position: relative;
+    }
+
+    .slide-a::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 1.5rem;
+    }
+
+    .banner-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        z-index: 1;
+        /* Minimal shadow */
+        text-shadow: 0 3px 8px rgba(0, 0, 0, 0.55);
+    }
+
+    .banner-content .banner-text-1 {
+        font-size: 1.3rem;
+        font-weight: bold;
+        white-space: nowrap;
+    }
+
+    .banner-content .banner-text-2 {
+        font-size: .9rem;
+        white-space: nowrap;
+    }
+
+    .banner-content .button {
+        margin: 1.5rem auto 0 auto;
+        width: 70%;
+    }
+}
+
+/*
+        ################################################################
+        ||                                                            ||
+        ||                      GAME CATEGORY CSS                     ||
+        ||                                                            ||
+        ################################################################
+        */
+
+/* === Game Category Section === */
+.game-category-section {
+    user-select: none;
+    padding: 1.5rem 6.5rem;
+    position: relative;
+    overflow: visible;
+}
+
+.game-category-wrapper {
+    position: relative;
+}
+
+/* Outer wrapper */
+.game-category {
+    padding: 1rem;
+    background: #323232;
+    border-radius: 0.75rem;
+    overflow-x: auto;
+    position: relative;
+}
+
+/* Main category navigation */
+.category {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+    white-space: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.category .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    border: none;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: var(--font-weight-2);
+    color: var(--text-color-1);
+    background: linear-gradient(90deg,
+            var(--bg-cta) 0%,
+            var(--bg-cta) 50%,
+            #cbee69 65%,
+            var(--bg-cta) 100%);
+    background-size: 200% 200%;
+    background-position: right center;
+    transition: background-position 0.5s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover effect */
+.category .button:hover {
+    background-position: left center;
+}
+
+.category .button img {
+    height: 1.5rem;
+}
+
+/* Search Button */
+.category .search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    background: var(--background-color-1);
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.category .search-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+}
+
+/* CSS RESPONSIVENESS */
+@media (max-width: 768px) {
+
+    .game-category-section {
+        padding: 1rem;
+    }
+
+    .game-category {
+        padding: 0.75rem;
+        border-radius: 0.6rem;
+    }
+}
+
+/*
+        ################################################################
+        ||                                                            ||
+        ||                      LIVE SEARCH CSS                       ||
+        ||                                                            ||
+        ################################################################
+        */
+
+/* ✅ Wrap both input + button in flex */
+.game-search-box {
+    display: flex;
+    align-items: center;
+    width: 16rem;
+    height: 2.6rem;
+    margin-left: auto;
+    position: relative;
+    overflow: visible;
+}
+
+.search-btn {
+    -webkit-tap-highlight-color: transparent;
+    /* remove ugly default highlight */
+}
+
+.search-btn:focus,
+.search-btn:active,
+.search-btn:focus-visible {
+    outline: none;
+    box-shadow: none;
+    background: none;
+    border: none;
+}
+
+
+#game-search {
+    width: 16rem;
+    height: 2.6rem;
+    padding: 0 1rem;
+    margin-left: .2rem;
+    background: var(--background-color-1);
+    border: none;
+    border-radius: 0.5rem;
+    color: #fff;
+    font-size: 0.875rem;
+}
+
+#game-search:focus {
+    outline: none;
+    border: 1px solid #fff;
+}
+
+.search-wrapper {
+    position: relative;
+    width: 260px;
+    margin-top: 0.75rem;
+    margin-left: auto;
+    /* stays aligned right */
+}
+
+#live-search {
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 0.9rem;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+}
+
+/* ✅ Dropdown no longer expands container! */
+/* Dropdown appears below but floating */
+#search-results {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    width: 16rem;
+
+    background: #2b2b2b;
+    border-radius: 0.5rem;
+    border: 1px solid #444;
+    max-height: 220px;
+    overflow-y: auto;
+    z-index: 99999;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: none;
+}
+
+#search-results li {
+    padding: 0.65rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border-bottom: 1px solid #3a3a3a;
+}
+
+#search-results li:last-child {
+    border-bottom: none;
+}
+
+#search-results li:hover {
+    background: #3e3e3e;
+}
+
+
+/* ✅ Modal Background */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    justify-content: center;
+    align-items: center;
+}
+
+/* ✅ Modal Box */
+.modal-content {
+    background: #1a1a1a;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    text-align: center;
+    width: 90%;
+    max-width: 380px;
+    border: 1px solid #444;
+}
+
+.modal-content img {
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+.modal-content h2 {
+    margin: 1rem 0 0.25rem;
+    color: #fff;
+}
+
+.modal-content p {
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+/* ✅ Close Button */
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+/* ✅ Play Button */
+.play-btn {
+    background: linear-gradient(90deg, #92ff45, #bbff72);
+    border: none;
+    color: #000;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 100%;
+}
+
+
+
+/*
+        ################################################################
+        ||                                                            ||
+        ||                       TOP PICKS CSS                        ||
+        ||                                                            ||
+        ################################################################
+        */
+
+.top-picks-section {
+    user-select: none;
+    padding: 1.5rem 6.5rem;
+}
+
+.top-picks-title {
+    display: flex;
+    justify-content: space-between;
+    /* space between h2 and link */
+    align-items: center;
+    /* vertically center */
+    margin: 0 0 1rem 0;
+}
+
+.top-picks-title h2 {
+    font-size: medium;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* space between icon and text */
+}
+
+.top-picks-title a {
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--accent, #34d399);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.top-picks-title a:hover {
+    color: var(--accent-2, #ffd166);
+}
+
+.top-picks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 196px);
+    /* Fixed card width */
+    grid-auto-rows: 16.063rem;
+    /* Fixed card height */
+    gap: 1.2rem;
+    justify-content: center;
+    /* Center the grid */
+}
+
+/* Card appearance */
+.top-picks-grid .grid-img,
+.top-picks-grid .grid-img-banner {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.75rem;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover effect */
+.top-picks-grid .grid-img:hover {
+    transform: scale(1.05);
+}
+
+/* ✅ Banner spans 2 columns AND 2 rows */
+.top-picks-grid .grid-img-banner {
+    grid-column: span 2;
+}
+
+/* ✅ Responsive layout — fixed (replace existing mobile rules for .top-picks-grid) */
+@media (max-width: 768px) {
+    .top-picks-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .top-picks-title a {
+        font-weight: var(--font-weight-2)
+    }
+
+    .top-picks-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* let rows size to content instead of forcing a fixed row height */
+        grid-auto-rows: auto;
+        gap: 0.75rem;
+        padding: 0 1rem;
+        align-items: start;
+        /* important: prevent items from stretching & overlapping */
+    }
+
+    /* Banner becomes full width and flows naturally */
+    .top-picks-grid .grid-img-banner {
+        grid-column: 1 / -1;
+        /* full width */
+        width: 100%;
+        height: auto;
+        /* let image decide height */
+        display: block;
+        object-fit: cover;
+        /* cover behavior if aspect ratio differs */
+        align-self: start;
+        /* ensure banner sits at top of its grid cell */
+    }
+
+    /* Regular grid items keep a consistent height but won't overlap banner */
+    .top-picks-grid .grid-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        align-self: start;
+        /* prevent vertical stretch that causes overlap */
+    }
+}
+
+/*
+        ################################################################
+        ||                                                            ||
+        ||                      PROMOTIONS CSS                        ||
+        ||                                                            ||
+        ################################################################
+        */
+
+.promotions-section {
+    user-select: none;
+    padding: 1.5rem 6.5rem;
+}
+
+.promotions-title {
+    display: flex;
+    justify-content: space-between;
+    /* evenly space out h2 and link */
+    align-items: center;
+    /* vertically center */
+    margin: 0 0 1rem 0;
+}
+
+.promotions-title h2 {
+    font-size: medium;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* space between icon and text */
+}
+
+.promotions-title a {
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--accent, #34d399);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.promotions-title a:hover {
+    color: var(--accent-2, #ffd166);
+}
+
+
+.promotions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 2fr));
+    gap: 1rem;
+
+    justify-content: center;
+}
+
+.promotions-grid img {
+    width: 100%;
+    border-radius: .75rem;
+}
+
+.promo-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    /* Changed to 100vh */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    overflow: hidden;
+    /* Added overflow hidden */
+}
+
+.promo-modal-content {
+    background-color: var(--background-color-3);
+    border-radius: .75rem;
+    position: absolute;
+    /* Changed to absolute */
+    top: 50%;
+    /* Added top 50% */
+    left: 50%;
+    /* Added left 50% */
+    transform: translate(-50%, -50%);
+    /* Added transform */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    max-height: 90vh;
+    /* Added max-height */
+    overflow-y: auto;
+    /* Added overflow-y auto */
+}
+
+.promo-modal-content img {
+    width: 50%;
+    border-radius: .5rem;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 1.5rem;
+}
+
+.promo-close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.promo-close-modal:hover,
+.promo-close-modal:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Add this to prevent body scrolling when modal is open */
+body.modal-open {
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .promotions-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .promotions-title a {
+        font-weight: var(--font-weight-2)
+    }
+
+    .promo-modal-content {
+        width: 80%;
+    }
+
+    .promo-modal-content img {
+        width: 100%;
+    }
+}
+
+/*
+        ################################################################
+        ||                                                            ||
+        ||                     RANDOM GAME CSS                        ||
+        ||                                                            ||
+        ################################################################
+        */
+
+.game-carousel {
+    user-select: none;
+    width: 100%;
+    padding: 1.5rem 6.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-carousel .swiper {
+    width: 100%;
+    max-width: 1100px;
+}
+
+.game-carousel-title {
+    margin: 0 0 1rem 0;
+    text-align: center;
+}
+
+.game-carousel-title h2 {
+    font-size: x-large;
+}
+
+.game-carousel .swiper-wrapper {
+    padding-top: 1.5rem;
+}
+
+/* Default Slide Size (Desktop View) */
+.game-carousel .swiper-slide {
+    background: #1e1e1e;
+    border-radius: 20px;
+    width: 240px;
+    height: 340px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.game-carousel .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: transform 0.4s ease;
+}
+
+.game-carousel .swiper-slide:hover img {
+    transform: scale(1.1);
+}
+
+/* Remove default absolute positioning */
+.swiper-button-prev,
+.swiper-button-next {
+    position: static !important;
+    margin: 0;
+}
+
+/* Center container under carousel */
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    margin-top: 2.5rem;
+}
+
+/* Style buttons */
+.carousel-nav button {
+    background: #2b2b2b;
+    color: #d0e98c;
+    border: none;
+    border-radius: 100px;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.25s ease-in-out;
+}
+
+/* Hover effect */
+.carousel-nav button:hover {
+    background: #cbee69;
+    color: #1e1e1e;
+    transform: scale(1.05);
+}
+
+/* ✅ Tablet Responsive */
+@media (max-width: 768px) {
+    .game-carousel {
+        padding: 1.5rem 2rem;
+        /* reduce padding so slider doesn’t overflow */
+    }
+
+    .game-carousel .swiper-slide {
+        width: 180px;
+        height: 260px;
+    }
+
+    .game-carousel .swiper-slide img {
+        opacity: 1;
+    }
+}
+
+/* ✅ Mobile Responsive */
+@media (max-width: 480px) {
+    .game-carousel {
+        padding: 1.25rem 1rem;
+        /* tighter padding on mobile */
+    }
+
+    .game-carousel .swiper {
+        padding-bottom: 60px;
+    }
+
+    .game-carousel .swiper-slide {
+        width: 150px;
+        height: 220px;
+    }
+
+    .game-carousel .swiper-slide img {
+        opacity: 1;
+    }
+
+    .carousel-nav button {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/*
+        ################################################################
+        ||                                                            ||
+        ||                          SLOTS CSS                         ||
+        ||                                                            ||
+        ################################################################
+        */
+
+.slots-section {
+    user-select: none;
+    padding: 1.5rem 6.5rem;
+}
+
+.slots-title {
+    display: flex;
+    justify-content: space-between;
+    /* space between h2 and link */
+    align-items: center;
+    /* vertically center */
+    margin: 0 0 1rem 0;
+}
+
+.slots-title h2 {
+    font-size: medium;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* space between icon and text */
+}
+
+.slots-title a {
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--accent, #34d399);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.slots-title a:hover {
+    color: var(--accent-2, #ffd166);
+}
+
+.slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 196px);
+    /* Fixed card width */
+    grid-auto-rows: 16.063rem;
+    /* Fixed card height */
+    gap: 1.2rem;
+    justify-content: center;
+    /* Center the grid */
+}
+
+/* Card appearance */
+.slots-grid .grid-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.75rem;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover effect */
+.slots-grid .grid-img:hover {
+    transform: scale(1.05);
+}
+
+/* ✅ Responsive layout — fixed (replace existing mobile rules for .top-picks-grid) */
+@media (max-width: 768px) {
+    .slots-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .slots-title a {
+        font-weight: var(--font-weight-2)
+    }
+
+    .slots-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* let rows size to content instead of forcing a fixed row height */
+        grid-auto-rows: auto;
+        gap: 0.75rem;
+        padding: 0 1rem;
+        align-items: start;
+        /* important: prevent items from stretching & overlapping */
+    }
+
+    /* Regular grid items keep a consistent height but won't overlap banner */
+    .slots-grid .grid-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        align-self: start;
+        /* prevent vertical stretch that causes overlap */
+    }
+}
+
+/*
+        ################################################################
+        ||                                                            ||
+        ||                     FLYING GAMES CSS                       ||
+        ||                                                            ||
+        ################################################################
+        */
+
+.flying-games-section {
+    user-select: none;
+    padding: 1.5rem 6.5rem;
+}
+
+.flying-games-title {
+    display: flex;
+    justify-content: space-between;
+    /* space between h2 and link */
+    align-items: center;
+    /* vertically center */
+    margin: 0 0 1rem 0;
+}
+
+.flying-games-title h2 {
+    font-size: medium;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* space between icon and text */
+}
+
+.flying-games-title a {
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--accent, #34d399);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.flying-games-title a:hover {
+    color: var(--accent-2, #ffd166);
+}
+
+.flying-games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 196px);
+    /* Fixed card width */
+    grid-auto-rows: 16.063rem;
+    /* Fixed card height */
+    gap: 1.2rem;
+    justify-content: center;
+    /* Center the grid */
+}
+
+/* Card appearance */
+.flying-games-grid .grid-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.75rem;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover effect */
+.flying-games-grid .grid-img:hover {
+    transform: scale(1.05);
+}
+
+/* ✅ Responsive layout — fixed (replace existing mobile rules for .top-picks-grid) */
+@media (max-width: 768px) {
+    .flying-games-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .flying-games-title a {
+        font-weight: var(--font-weight-2)
+    }
+
+    .flying-games-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* let rows size to content instead of forcing a fixed row height */
+        grid-auto-rows: auto;
+        gap: 0.75rem;
+        padding: 0 1rem;
+        align-items: start;
+        /* important: prevent items from stretching & overlapping */
+    }
+
+    /* Regular grid items keep a consistent height but won't overlap banner */
+    .flying-games-grid .grid-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        align-self: start;
+        /* prevent vertical stretch that causes overlap */
+    }
+}
+
+/*
+        ################################################################
+        ||                                                            ||
+        ||                    SPINNING WHEELS CSS                     ||
+        ||                                                            ||
+        ################################################################
+        */
+
+.spinning-wheels-section {
+    user-select: none;
+    padding: 1.5rem 6.5rem;
+    padding-bottom: 5rem;
+}
+
+.spinning-wheels-title {
+    display: flex;
+    justify-content: space-between;
+    /* space between h2 and link */
+    align-items: center;
+    /* vertically center */
+    margin: 0 0 1rem 0;
+}
+
+.spinning-wheels-title h2 {
+    font-size: medium;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* space between icon and text */
+}
+
+.spinning-wheels-title a {
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--accent, #34d399);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.spinning-wheels-title a:hover {
+    color: var(--accent-2, #ffd166);
+}
+
+.spinning-wheels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 196px);
+    /* Fixed card width */
+    grid-auto-rows: 16.063rem;
+    /* Fixed card height */
+    gap: 1.2rem;
+    justify-content: center;
+    /* Center the grid */
+}
+
+/* Card appearance */
+.spinning-wheels-grid .grid-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.75rem;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover effect */
+.spinning-wheels-grid .grid-img:hover {
+    transform: scale(1.05);
+}
+
+/* ✅ Responsive layout — fixed (replace existing mobile rules for .top-picks-grid) */
+@media (max-width: 768px) {
+    .spinning-wheels-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .spinning-wheels-title a {
+        font-weight: var(--font-weight-2)
+    }
+
+    .spinning-wheels-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* let rows size to content instead of forcing a fixed row height */
+        grid-auto-rows: auto;
+        gap: 0.75rem;
+        padding: 0 1rem;
+        align-items: start;
+        /* important: prevent items from stretching & overlapping */
+    }
+
+    /* Regular grid items keep a consistent height but won't overlap banner */
+    .spinning-wheels-grid .grid-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        align-self: start;
+        /* prevent vertical stretch that causes overlap */
+    }
+}
+
+/*
+        ################################################################
+        ||                                                            ||
+        ||                        ABOUT US CSS                        ||
+        ||                                                            ||
+        ################################################################
+        */
+
+.about-section {
+    padding: 1.5rem 6.5rem;
+}
+
+/* Title */
+.about-title {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.about-title h2 {
+    font-size: medium;
+}
+
+/* Desktop Layout */
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.about-icon img {
+    user-select: none;
+    width: 17rem;
+    max-width: 100%;
+    height: auto;
+}
+
+.about-description {
+    width: 35rem;
+    max-width: 100%;
+    line-height: 1.6;
+}
+
+.about-description h2 {
+    margin-bottom: 1rem;
+}
+
+.about-description p {
+    color: #969595;
+}
+
+/* Cards */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.card {
+    background: #2b2b2b;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    width: 18.75rem;
+    text-align: center;
+}
+
+.card h3 {
+    font-size: small;
+}
+
+.card p {
+    font-size: smaller;
+    color: #969595;
+    margin-top: 0.5rem;
+    line-height: 1.6;
+}
+
+/* ✅ MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+
+    .about-section {
+        padding: 1.5rem 1.25rem;
+        /* reduce side padding */
+    }
+
+    .about-content {
+        flex-direction: column;
+        /* stack image + text */
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .about-description {
+        width: 100%;
+    }
+
+    .about-icon img {
+        width: 12rem;
+        /* slightly smaller icon */
+    }
+
+    .card {
+        width: 100%;
+        /* cards stretch full width */
+    }
+}
+
+/* ✅ EXTRA SMALL PHONES */
+@media (max-width: 430px) {
+    .about-icon img {
+        width: 9rem;
+    }
+
+    .about-description {
+        font-size: 0.9rem;
+    }
+}
+
+
+/*
+        ################################################################
+        ||                                                            ||
+        ||                         FOOTER CSS                         ||
+        ||                                                            ||
+        ################################################################
+        */
+
+/* Scroll to Top Button (Debug Mode – guaranteed visible) */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: rgb(33, 128, 41);
+    /* TEMP for visibility */
+    color: white;
+    font-size: 2rem;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+
+    display: flex;
+    /* Force visible */
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999999999;
+    /* Forces button above EVERYTHING */
+
+    /* Floating animation */
+    animation: floatUpDown 1.4s ease-in-out infinite;
+}
+
+/* ✨ Floating effect keyframes */
+@keyframes floatUpDown {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+/* Footer Base */
+.site-footer {
+    background: var(--background-color-3);
+    /* dark purple-black tone */
+    color: #f5f5f5;
+    padding: 3rem 2rem;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* Footer Badges */
+.footer-badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 0.75rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 200px;
+}
+
+.badge:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Badge Text */
+.badge-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.badge-sub {
+    font-size: 0.875rem;
+    color: #969595;
+    margin: 0;
+}
+
+/* Footer Info Text */
+.footer-info {
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: #969595;
+    font-size: 0.95rem;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 2rem;
+    padding-top: 1rem;
+    font-size: 0.875rem;
+    color: #aaa;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .footer-badges {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .badge {
+        width: 90%;
+        justify-content: center;
+    }
+
+    .footer-info {
+        font-size: 0.9rem;
+        padding: 0 1rem;
+    }
+}

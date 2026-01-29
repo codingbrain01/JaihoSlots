@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search</title>
+    <meta name="description"
+        content="WillBet AI helps users make smarter betting predictions using AI-driven insights and real-time data analytics." />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="WillBet AI – Predict Smarter, Win Smarter" />
+    <meta property="og:description"
+        content="AI-powered betting predictions and insights for smarter, data-driven success." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourwebsite.com" />
+    <meta property="og:image" content="images/og-image.png" />
+
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 2em;
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+        }
+
+        #live-search-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            /* Ensures padding doesn't affect width */
+        }
+
+        #item-list {
+            list-style-type: none;
+            padding: 0;
+            max-width: 400px;
+            margin-top: 8px;
+        }
+
+        #item-list li {
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: #f6f6f6;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            display: none;
+            /* items hidden until match */
+        }
+
+        /* "No results" message */
+        #no-results {
+            display: none;
+            padding: 10px;
+            color: #999;
+            font-size: 14px;
+        }
+
+
+        /* Add a style for when the search input is focused */
+        #live-search-input:focus {
+            outline: none;
+            border-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search-container">
+        <input type="text" id="live-search-input" placeholder="Search for items..." />
+    </div>
+
+    <ul id="item-list">
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Orange</li>
+        <li>Grape</li>
+        <li>Pineapple</li>
+        <li>Strawberry</li>
+        <li>Watermelon</li>
+    </ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('live-search-input');
+            const items = document.querySelectorAll('#item-list li');
+
+            // Create "no results" element
+            const noResults = document.createElement('li');
+            noResults.id = 'no-results';
+            noResults.textContent = 'No results found';
+            document.getElementById('item-list').appendChild(noResults);
+
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value.toLowerCase();
+                let matchFound = false;
+
+                items.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if (query && text.includes(query)) {
+                        item.style.display = 'block';
+                        matchFound = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // Show or hide "no results"
+                noResults.style.display = (!matchFound && query) ? 'block' : 'none';
+            });
+        });
+
+
+
+    </script>
+</body>
+
+</html>
