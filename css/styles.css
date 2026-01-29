@@ -288,6 +288,7 @@ header {
 .side ul li .side2box:hover {
     opacity: 1;
     transform: translateX(-4px);
+    background: var(--accent-green);
 }
 
 .side ul li .side2box img {
