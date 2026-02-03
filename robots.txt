@@ -1,4 +1,4 @@
-# JaiHo Slots - Robots.txt
+# jaihoslots | JaiHo Slots - Robots.txt
 # Updated: January 2025
 
 User-agent: *
