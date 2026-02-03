@@ -404,7 +404,7 @@ Update in `index.html`:
 ## 📝 License & Credits
 
 **Project:** JaiHo Slots  
-**Developer:** codingbrain
+**Developer:** codingbrain  
 **Developer Email:** codingbrain01@gmail.com  
 **Updated:** January 2025  
 **Version:** 2.1 (Optimized)
