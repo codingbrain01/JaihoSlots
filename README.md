@@ -19,6 +19,16 @@
 
 ---
 
+# JaihoSlots Official Update v2.1
+
+---
+
+## What's new?
+- Hindi language added
+- Translate page from English to Hindi
+
+---
+
 # JaiHo Slots - Implementation Guide
 
 ## 📋 Files Updated
@@ -394,9 +404,10 @@ Update in `index.html`:
 ## 📝 License & Credits
 
 **Project:** JaiHo Slots  
-**Developer:** codingbrain  
+**Developer:** codingbrain
+**Developer Email:** codingbrain01@gmail.com  
 **Updated:** January 2025  
-**Version:** 2.0 (Optimized)
+**Version:** 2.1 (Optimized)
 
 ---
 
